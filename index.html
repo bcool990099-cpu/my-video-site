@@ -1,1 +1,49 @@
-<!DOCTYPE html><html><body style="background:blue;color:white;text-align:center;font-family:sans-serif;display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;"><h1>V4: BLUE VERSION - PUSHED VIA TERMINAL</h1><canvas id="c" width="600" height="400" style="background:black;border:5px solid white;"></canvas><script>const canvas=document.getElementById("c");const ctx=canvas.getContext("2d");let x=0,f=0;function animate(){ctx.fillStyle="black";ctx.fillRect(0,0,600,400);ctx.strokeStyle="white";ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(0,300);ctx.lineTo(600,300);ctx.stroke();x=(x+5)%650-50;let b=Math.sin(f*0.2)*10,s=Math.sin(f*0.2)*40;ctx.beginPath();ctx.arc(x,200+b,15,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.moveTo(x,215+b);ctx.lineTo(x,260+b);ctx.stroke();ctx.beginPath();ctx.moveTo(x,260+b);ctx.lineTo(x+s,300);ctx.stroke();ctx.beginPath();ctx.moveTo(x,260+b);ctx.lineTo(x-s,300);ctx.stroke();f++;requestAnimationFrame(animate);}animate();</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V5 - LIVE ANIMATION</title>
+    <style>
+        body { background: #000; color: #0f0; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: monospace; }
+        .container { text-align: center; border: 3px solid #0f0; padding: 20px; background: #000; box-shadow: 0 0 20px #0f0; }
+        canvas { background: #000; border: 2px solid #0f0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>[SYSTEM: ACTIVE_RENDER_V5]</h1>
+        <canvas id="walkCanvas" width="600" height="400"></canvas>
+        <p>V5: REAL-TIME JS RENDER</p>
+    </div>
+    <script>
+        (function() {
+            const canvas = document.getElementById("walkCanvas");
+            const ctx = canvas.getContext("2d");
+            let x = 0; let frame = 0;
+            function draw() {
+                ctx.fillStyle = "black";
+                ctx.fillRect(0, 0, 600, 400);
+                ctx.strokeStyle = "#0f0";
+                ctx.lineWidth = 5;
+                ctx.beginPath();
+                ctx.moveTo(0, 300); ctx.lineTo(600, 300); ctx.stroke();
+                x = (x + 4) % 650 - 50;
+                let bob = Math.sin(frame * 0.2) * 10;
+                let swing = Math.sin(frame * 0.2) * 35;
+                ctx.beginPath();
+                ctx.arc(x, 200 + bob, 15, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(x, 215 + bob); ctx.lineTo(x, 260 + bob); ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(x, 260 + bob); ctx.lineTo(x + swing, 300); ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(x, 260 + bob); ctx.lineTo(x - swing, 300); ctx.stroke();
+                frame++;
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
+    </script>
+</body>
+</html>
